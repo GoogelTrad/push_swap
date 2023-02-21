@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:25:42 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/21 18:27:01 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:08:04 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void push_a(t_Pile pile_a, t_Pile pile_b)
 {
-	
+	if (pile_b->premier == NULL)
+        return ;
 }

@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/21 18:24:05 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:07:51 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_Pile
 t_Pile	*initialisation(void);
 void	insertion(t_Pile *liste, int nombre);
 void	swap_a(t_Pile *pile);
+void	insertion_haut(t_Pile *pile, t_Element *element);
+void	affiche_pile(t_Element **first);
 
 //instructions
 void	swap_a(t_Pile *pile);

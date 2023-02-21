@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:40:22 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/21 18:38:39 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:07:28 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,36 @@ t_Pile	*initialisation(void)
 void	insertion(t_Pile *pile, int nombre)
 {
 	t_Element	*nouveau;
-	t_Pile		*temp;
+	t_Element	*actuel;
 	
 	nouveau = malloc(sizeof(nouveau));
 	nouveau->nombre = nombre;
-	temp = pile;
-	while (temp->premier != NULL)
-		temp->premier = temp->premier->suivant;
-	temp->premier->suivant = nouveau;
+	nouveau->suivant = NULL;
+	if(pile->premier != NULL)
+	{
+		actuel = pile->premier;
+		while (actuel->suivant != NULL)
+			actuel = actuel->suivant;
+		actuel->suivant = nouveau;
+	}
+	else
+		pile->premier = nouveau;
+}
+
+void	insertion_haut(t_Pile *pile, t_Element *element)
+{
+	element->suivant = pile->premier;
+	pile->premier = element;
+}
+
+void	affiche_pile(t_Element **first)
+{
+	t_Element	*e;
+
+	e = (*first);
+	while (e)
+	{
+		printf("%d\n", e->nombre);
+		e = e->suivant;
+ 	}
 }
