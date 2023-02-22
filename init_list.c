@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:40:22 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/22 00:07:28 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/02/22 14:46:38 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 t_Pile	*initialisation(void)
 {
 	t_Pile		*pile;
-	t_Element	*element;
 
 	pile = malloc(sizeof(pile));
-	element = malloc(sizeof(element));
-	element->nombre = 0;
-	element->suivant = NULL;
-	pile->premier = element;
 	return (pile);
 }
 
