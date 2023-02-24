@@ -22,6 +22,6 @@ void    rev_rotate_a(t_Pile *pile)
         actuel = actuel->suivant;
     temp = actuel->suivant;
     temp->suivant = pile->premier;
+    pile->premier = temp;
     actuel->suivant = NULL;
-    
 }
