@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/23 19:05:17 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:48:41 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 typedef struct s_Element
 {
@@ -53,5 +54,17 @@ void	rotate_r(t_Pile *pile_a, t_Pile *pile_b);
 
 //reverse rotate
 void    rev_rotate_a(t_Pile *pile);
+void    rev_rotate_b(t_Pile *pile);
+void    rev_rotate_r(t_Pile *pile_a, t_Pile *pile_b);
+
+//utils
+int		ft_atoi(char *nptr, int *y);
+int		ft_strlen(char *str);
+int		ft_isalpha(int c);
+char	*ft_strdup(char *s);
+
+//argument
+t_Pile	*create_list(t_Pile *pile, int ac, char **av);
+void	verif_str(char *str, t_Pile *pile);
 
 #endif
