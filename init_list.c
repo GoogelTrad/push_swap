@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:40:22 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/22 14:46:38 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/01 15:42:01 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_Pile	*initialisation(void)
 	t_Pile		*pile;
 
 	pile = malloc(sizeof(pile));
+	pile->premier = NULL;
 	return (pile);
 }
 
@@ -25,7 +26,7 @@ void	insertion(t_Pile *pile, int nombre)
 	t_Element	*nouveau;
 	t_Element	*actuel;
 	
-	nouveau = malloc(sizeof(nouveau));
+	nouveau = malloc(sizeof(t_Element));
 	nouveau->nombre = nombre;
 	nouveau->suivant = NULL;
 	if(pile->premier != NULL)
