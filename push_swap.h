@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/02 16:31:16 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:43:13 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 
 typedef struct s_Element
 {
-	int nombre;
-	struct s_Element *suivant;
+	int					nombre;
+	struct s_Element	*suivant;
 }   t_Element;
 
 typedef struct s_Pile
 {
-	t_Element *premier;
+	t_Element	*premier;
+	int			size;
 }   t_Pile;
 
 //init_list.c
@@ -71,5 +72,6 @@ int		verif_argument(int ac, char **av);
 //tri
 void	tri(t_Pile *pile_a, t_Pile *pile_b);
 void	swap_premier(t_Pile *pile_a, t_Pile *pile_b);
+int		is_triee(t_Pile *pile_a);
 
 #endif

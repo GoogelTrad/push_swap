@@ -6,22 +6,28 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/02 17:19:57 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:45:30 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tri(t_Pile *pile_a, t_Pile *pile_b, int size)
+void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {
-	while (size)
+	while (is_triee(pile_a) && pile_b->premier == NULL)
 	{
-		printf("pile a\n");
-		affiche_pile(&pile_a->premier);
-		printf("pile b\n");
-		affiche_pile(&pile_b->premier);
-		printf("tri\n");
-		swap_premier(pile_a, pile_b);
+		while (pile_a->size > 1)
+		{
+			printf("tri a\n");
+			swap_premier(pile_a, pile_b);
+			rotate_a(pile_a);
+		}
+		while (pile_b->size > 1)
+		{
+			printf("tri b\n");
+			swap_premier(pile_b, pile_a);
+			rotate_b(pile_b);
+		}
 	}
 }
 
@@ -34,4 +40,17 @@ void	swap_premier(t_Pile *pile_a, t_Pile *pile_b)
 	}
 	else
 		push_b(pile_a, pile_b);
+}
+
+int	is_triee(t_Pile *pile_a)
+{
+	t_Element *actuel;
+
+	actuel = pile_a->premier;
+	while (actuel->nombre < actuel->suivant->nombre)
+		actuel = actuel->suivant;
+	if (!(actuel->nombre < actuel->suivant->nombre))
+		return (1);
+	affiche_pile(&pile_a->premier);
+	return (0);
 }

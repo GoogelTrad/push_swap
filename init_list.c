@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:40:22 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/01 15:42:01 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:31:05 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_Pile	*initialisation(void)
 
 	pile = malloc(sizeof(pile));
 	pile->premier = NULL;
+	pile->size = 0;
 	return (pile);
 }
 
