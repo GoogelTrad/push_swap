@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:19:34 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/27 14:54:37 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:54:44 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int main(int argc, char **argv)
 {
 	t_Pile *pile_a;
-	//t_Pile *pile_b;
+	t_Pile *pile_b;
 	pile_a = initialisation();
+	pile_b = initialisation();
 	pile_a = create_list(pile_a, argc, argv);
-	affiche_pile(&pile_a->premier);
-	
+	tri(pile_a, pile_b);
 	return (0);
 }

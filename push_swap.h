@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/01 15:14:25 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:31:16 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,9 @@ char	*ft_strdup(char *s);
 t_Pile	*create_list(t_Pile *pile, int ac, char **av);
 void	verif_str(char *str, t_Pile *pile);
 int		verif_argument(int ac, char **av);
+
+//tri
+void	tri(t_Pile *pile_a, t_Pile *pile_b);
+void	swap_premier(t_Pile *pile_a, t_Pile *pile_b);
 
 #endif
