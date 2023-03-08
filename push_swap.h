@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/03 16:43:13 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/08 15:44:29 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		verif_argument(int ac, char **av);
 //tri
 void	tri(t_Pile *pile_a, t_Pile *pile_b);
 void	swap_premier(t_Pile *pile_a, t_Pile *pile_b);
-int		is_triee(t_Pile *pile_a);
+int		verif_pile(t_Pile *pile);
+int		pile_trie(t_Pile *pile);
 
 #endif
