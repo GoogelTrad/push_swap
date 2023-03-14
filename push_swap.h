@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/08 15:44:29 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/14 18:18:26 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	tri(t_Pile *pile_a, t_Pile *pile_b);
 void	swap_premier(t_Pile *pile_a, t_Pile *pile_b);
 int		verif_pile(t_Pile *pile);
 int		pile_trie(t_Pile *pile);
+t_Element	*elem_sup(t_Element *elem);
 
 #endif

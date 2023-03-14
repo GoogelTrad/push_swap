@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/08 16:15:10 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/14 19:21:25 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {
+	t_Element	*tmp;
+	t_Element	*actuel;
+
+	actuel = pile_a->premier;
 	while (!pile_trie(pile_a))
 	{
-		while (verif_pile(pile_a))
-			swap_premier(pile_a, pile_b);
-		printf("pile b\n");
-		affiche_pile(&pile_a->premier);
-		printf("pile b\n");
-		affiche_pile(&pile_b->premier);
-		while (verif_pile(pile_b))
-			swap_premier(pile_b, pile_a);
-		printf("pile b\n");
-		affiche_pile(&pile_a->premier);
-		printf("pile b\n");
-		affiche_pile(&pile_b->premier);		
+		if ()
 	}
+	
 }
 
 void	swap_premier(t_Pile *pile_a, t_Pile *pile_b)
@@ -52,10 +46,21 @@ int	verif_pile(t_Pile *pile)
 int	pile_trie(t_Pile *pile)
 {
 	t_Element *actu;
+	
 	actu = pile->premier;
 	while (actu->nombre <= actu->suivant->nombre)
 		actu = actu->suivant;
 	if (actu->suivant)
 		return (0);
 	return (1);
+}
+
+t_Element	*elem_sup(t_Pile *pile)
+{
+	t_Element	*tmp;
+	t_Element	*actuel;
+
+	tmp = pile->premier;
+	actuel = pile->premier;
+	return (0);
 }
