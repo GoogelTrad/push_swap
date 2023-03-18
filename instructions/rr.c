@@ -17,6 +17,7 @@ void    rev_rotate_a(t_Pile *pile)
     t_Element   *temp;
     t_Element   *actuel;
 
+    write(1, "rra\n", 4);
     actuel = pile->premier;
     while (actuel->suivant->suivant != NULL)
         actuel = actuel->suivant;
@@ -31,6 +32,7 @@ void    rev_rotate_b(t_Pile *pile)
     t_Element   *temp;
     t_Element   *actuel;
 
+    write(1, "rrb\n", 4);
     actuel = pile->premier;
     while (actuel->suivant->suivant != NULL)
         actuel = actuel->suivant;

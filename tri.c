@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/14 19:21:25 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/18 01:18:04 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,57 @@
 
 void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {
-	t_Element	*tmp;
-	t_Element	*actuel;
-
-	actuel = pile_a->premier;
-	while (!pile_trie(pile_a))
+	if (pile_a->size == 2)
 	{
-		if ()
+		if (pile_a->premier->nombre > pile_a->premier->suivant->nombre)
+			swap_a(pile_a);
 	}
-	
+	else if (pile_a->size == 3)
+		tri_3_elem(pile_a);
+	else if (pile_a->size == 4)
+		tri_4_elem(pile_a, pile_b);
+	else if (pile_a->size == 5)
+		tri_5_elem(pile_a, pile_b);
+	printf("pile a\n");
+	affiche_pile(&pile_a->premier);
+	printf("pile b\n");
+	affiche_pile(&pile_b->premier);
 }
 
-void	swap_premier(t_Pile *pile_a, t_Pile *pile_b)
+int	rev_pile_trie(t_Pile *pile)
 {
-	if (pile_a->premier->nombre > pile_a->premier->suivant->nombre)
-	{
-		swap_a(pile_a);
-		push_b(pile_a, pile_b);
-	}
-	else
-		push_b(pile_a, pile_b);
-}
+	t_Element *tmp;
 
-int	verif_pile(t_Pile *pile)
-{
-	if (pile->premier->suivant == NULL)
-		return (1);
-	return (0);
+	tmp = pile->premier;
+	while (tmp->suivant)
+	{
+		if (tmp->nombre < tmp->suivant->nombre)
+			return (0);
+		tmp = tmp->suivant;
+	}
+	return (1);
 }
 
 int	pile_trie(t_Pile *pile)
 {
-	t_Element *actu;
-	
-	actu = pile->premier;
-	while (actu->nombre <= actu->suivant->nombre)
-		actu = actu->suivant;
-	if (actu->suivant)
-		return (0);
+	t_Element *tmp;
+
+	tmp = pile->premier;
+	while (tmp->suivant)
+	{
+		if (tmp->nombre > tmp->suivant->nombre)
+			return (0);
+		tmp = tmp->suivant;
+	}
 	return (1);
 }
 
-t_Element	*elem_sup(t_Pile *pile)
-{
-	t_Element	*tmp;
-	t_Element	*actuel;
 
-	tmp = pile->premier;
-	actuel = pile->premier;
+int	elem_sup(t_Element *actuel)
+{
+	while(actuel->nombre > actuel->suivant->nombre)
+		actuel = actuel->suivant;
+	if (actuel->suivant)
+		return (1);
 	return (0);
 }

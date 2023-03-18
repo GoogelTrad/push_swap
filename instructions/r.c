@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:40:51 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/25 15:11:04 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/17 12:58:45 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	rotate_a(t_Pile *pile)
 	t_Element	*element;
 	t_Element	*actuel;
 
+	write(1, "ra\n", 3);
 	temp = pile->premier->suivant;
 	actuel = pile->premier;
 	element = pile->premier;
@@ -34,6 +35,7 @@ void	rotate_b(t_Pile *pile)
 	t_Element	*element;
 	t_Element	*actuel;
 
+	write(1, "rb\n", 3);
 	temp = pile->premier->suivant;
 	actuel = pile->premier;
 	element = pile->premier;

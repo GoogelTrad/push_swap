@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:25:42 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/03 16:38:36 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/16 14:37:23 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	push_a(t_Pile *pile_a, t_Pile *pile_b)
 	t_Element	*nouveau;
 	t_Element	*temp;
 	
+	write(1, "pa\n", 3);
 	if (pile_b->premier == NULL)
         return ;
 	temp = pile_b->premier->suivant;
@@ -33,6 +34,7 @@ void	push_b(t_Pile *pile_a, t_Pile *pile_b)
 	t_Element	*nouveau;
 	t_Element	*temp;
 	
+	write(1, "pb\n", 3);
 	if (pile_a->premier == NULL)
         return ;
 	temp = pile_a->premier->suivant;

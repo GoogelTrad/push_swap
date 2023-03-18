@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/14 18:18:26 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/18 01:17:54 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		ft_atoi(char *nptr, int *y);
 int		ft_strlen(char *str);
 int		ft_isalpha(int c);
 char	*ft_strdup(char *s);
+int		*add_tab(t_Pile *pile_a);
 
 //argument
 t_Pile	*create_list(t_Pile *pile, int ac, char **av);
@@ -71,9 +72,15 @@ int		verif_argument(int ac, char **av);
 
 //tri
 void	tri(t_Pile *pile_a, t_Pile *pile_b);
-void	swap_premier(t_Pile *pile_a, t_Pile *pile_b);
-int		verif_pile(t_Pile *pile);
 int		pile_trie(t_Pile *pile);
-t_Element	*elem_sup(t_Element *elem);
+int		rev_pile_trie(t_Pile *pile);
+int		elem_sup(t_Element *actuel);
+
+//tri_a_3
+void	tri_3_elem(t_Pile *pile_a);
+void	tri_4_elem(t_Pile *pile_a, t_Pile *pile_b);
+void	tri_5_elem(t_Pile *pile_a, t_Pile *pile_b);
+int		elem_inf(t_Pile *pile_a, int first);
+int		pos_inf(t_Pile *pile_a);
 
 #endif

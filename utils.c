@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:59:36 by cmichez           #+#    #+#             */
-/*   Updated: 2023/02/28 18:56:28 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/18 01:15:35 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,23 @@ char	*ft_strdup(char *s)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+int	*add_tab(t_Pile *pile_a)
+{
+	t_Element	*temp;
+	int			*tab;
+	int			i;
+
+	i = 0;
+	temp = pile_a->premier;
+	tab = malloc(sizeof(int) * (pile_a->size + 1));
+	temp = pile_a->premier;
+	while (temp->suivant)
+	{
+		tab[i] = temp->nombre;
+		i++;
+		temp = temp->suivant;
+	}
+	return (tab);
 }
