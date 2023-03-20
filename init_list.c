@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:40:22 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/03 16:31:05 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:04:28 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	insertion(t_Pile *pile, int nombre)
 	
 	nouveau = malloc(sizeof(t_Element));
 	nouveau->nombre = nombre;
+	nouveau->index = -1;
 	nouveau->suivant = NULL;
 	if(pile->premier != NULL)
 	{
@@ -54,7 +55,7 @@ void	affiche_pile(t_Element **first)
 	e = (*first);
 	while (e)
 	{
-		printf("%d\n", e->nombre);
+		printf("index = %d, valeur = %d\n", e->index, e->nombre);
 		e = e->suivant;
  	}
 }

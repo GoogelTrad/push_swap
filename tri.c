@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   tri.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/18 01:18:04 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:24:09 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	index_arg(t_Pile *pile)
+{
+	t_Element	*tmp;
+	t_Element	*min;
+	int			i;
+
+	i = 0;
+	while (i < pile->size)
+	{
+		tmp = pile->premier;
+		min = pile->premier;
+		while (min && min->index != -1)
+			min = min->suivant;
+		while (tmp)
+		{
+			if ((tmp->nombre < min->nombre) && tmp->index == -1)
+				min = tmp;
+			tmp = tmp->suivant;
+		}
+		if (min->index == -1)
+			min->index = i;
+		i++;
+	}
+}
 
 void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {

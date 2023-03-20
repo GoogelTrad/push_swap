@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/18 01:17:54 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/20 15:42:10 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_Element
 {
 	int					nombre;
+	int					index;
 	struct s_Element	*suivant;
 }   t_Element;
 
@@ -75,6 +76,7 @@ void	tri(t_Pile *pile_a, t_Pile *pile_b);
 int		pile_trie(t_Pile *pile);
 int		rev_pile_trie(t_Pile *pile);
 int		elem_sup(t_Element *actuel);
+void	index_arg(t_Pile *pile);
 
 //tri_a_3
 void	tri_3_elem(t_Pile *pile_a);

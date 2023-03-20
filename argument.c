@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:13:33 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/03 16:34:13 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:09:30 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ int verif_argument(int ac, char **av)
 	int	j;
 
 	i = 1;
-	j = 0;
 	while (i != ac)
 	{
+		j = 0;
 		while (av[i][j])
 		{
-			if (!(!((av[i][j] < '0' || av[i][j] > '9'))) && av[i][j] != '-' 
+			if ((av[i][j] < '0' || av[i][j] > '9') && av[i][j] != '-' 
 				&& av[i][j] != '+' && av[i][j] != ' ')
 				return (0);
 			j++;
