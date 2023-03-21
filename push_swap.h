@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 15:11:45 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 20:01:21 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,7 @@ t_Element	*get_inf(t_Pile *a, int *i);
 void	tri_large(t_Pile *pile_a, t_Pile *pile_b);
 void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b);
 t_Element	*get_sup(t_Pile *a, int *i);
+int		from_top(t_Pile *pile, int min, int max);
+int		from_bot(t_Pile *pile, int min, int max);
 
 #endif
