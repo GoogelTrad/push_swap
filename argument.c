@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:13:33 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/20 16:09:30 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:49:02 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ t_Pile	*create_list(t_Pile *pile, int ac, char **av)
 	{
 		verif_str(av[i], pile);
 		i++;
+	}
+	if (!verif_doublons(pile))
+	{
+		write(1, "Doublons détectés !\n", 22);
+		exit(0);
 	}
 	return (pile);
 }
@@ -68,6 +73,28 @@ int verif_argument(int ac, char **av)
 			j++;
 		}
 		i++;
+	}
+	return (1);
+}
+
+int	verif_doublons(t_Pile *pile)
+{
+	t_Element	*tmp;
+	t_Element	*actu;
+	int			nb;
+
+	actu = pile->premier;
+	while (actu)
+	{
+		nb = actu->nombre;
+		tmp = actu->suivant;
+		while (tmp)
+		{
+			if (nb == tmp->nombre)
+				return (0);
+			tmp = tmp->suivant;
+		}
+		actu = actu->suivant;
 	}
 	return (1);
 }

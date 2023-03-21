@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:59:36 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/18 01:15:35 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 14:55:01 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	*add_tab(t_Pile *pile_a)
 	temp = pile_a->premier;
 	while (temp->suivant)
 	{
-		tab[i] = temp->nombre;
+		tab[i] = temp->index;
 		i++;
 		temp = temp->suivant;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tri.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/20 16:24:09 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:21:44 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {
 	if (pile_a->size == 2)
 	{
-		if (pile_a->premier->nombre > pile_a->premier->suivant->nombre)
+		if (pile_a->premier->index > pile_a->premier->suivant->index)
 			swap_a(pile_a);
 	}
 	else if (pile_a->size == 3)
 		tri_3_elem(pile_a);
-	else if (pile_a->size == 4)
-		tri_4_elem(pile_a, pile_b);
-	else if (pile_a->size == 5)
+	else if (pile_a->size <= 5)
 		tri_5_elem(pile_a, pile_b);
-	printf("pile a\n");
-	affiche_pile(&pile_a->premier);
-	printf("pile b\n");
-	affiche_pile(&pile_b->premier);
+	else
+		tri_large(pile_a, pile_b);
+	//printf("pile a\n");
+	//affiche_pile(&pile_a->premier);
+	//printf("pile b\n");
+	//affiche_pile(&pile_b->premier);
 }
 
 int	rev_pile_trie(t_Pile *pile)
@@ -77,7 +77,7 @@ int	pile_trie(t_Pile *pile)
 	tmp = pile->premier;
 	while (tmp->suivant)
 	{
-		if (tmp->nombre > tmp->suivant->nombre)
+		if (tmp->index > tmp->suivant->index)
 			return (0);
 		tmp = tmp->suivant;
 	}
@@ -87,7 +87,7 @@ int	pile_trie(t_Pile *pile)
 
 int	elem_sup(t_Element *actuel)
 {
-	while(actuel->nombre > actuel->suivant->nombre)
+	while(actuel->index > actuel->suivant->index)
 		actuel = actuel->suivant;
 	if (actuel->suivant)
 		return (1);

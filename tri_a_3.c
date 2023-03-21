@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:25:46 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/18 01:17:08 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 15:12:30 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	tri_3_elem(t_Pile *pile_a)
 
 	while (!pile_trie(pile_a))
 	{
-		first = pile_a->premier->nombre;
-		second = pile_a->premier->suivant->nombre;
-		third = pile_a->premier->suivant->suivant->nombre;
+		first = pile_a->premier->index;
+		second = pile_a->premier->suivant->index;
+		third = pile_a->premier->suivant->suivant->index;
 		if (first > second)
 			swap_a(pile_a);
 		else if (first > second && first < third)
@@ -32,92 +32,48 @@ void	tri_3_elem(t_Pile *pile_a)
 	}
 }
 
-void	tri_4_elem(t_Pile *pile_a, t_Pile *pile_b)
+t_Element	*get_inf(t_Pile *a, int *i)
 {
-	int	first;
-	int	second;
+	int 		j;
+	t_Element	*min;
+	t_Element	*tmp;
 
-	while (!pile_trie(pile_a))
+	tmp = a->premier;
+	min = a->premier;
+	j = 0;
+	*i = 0;
+	while (tmp)
 	{
-		first = pile_a->premier->nombre;
-		second = pile_a->premier->suivant->nombre;
-		if (first < second)
+		if (tmp->index < min->index)
 		{
-			push_b(pile_a, pile_b);
-			tri_3_elem(pile_a);
+			*i = j;
+			min = tmp;
 		}
-		else
-		{
-			swap_a(pile_a);
-			push_b(pile_a, pile_b);
-			tri_3_elem(pile_a);
-		}
-		push_a(pile_a, pile_b);
+		j++;
+		tmp = tmp->suivant;
 	}
+	return (min);
 }
 
 void	tri_5_elem(t_Pile *pile_a, t_Pile *pile_b)
 {
 	int	i;
-
-	while (!elem_inf(pile_a, pile_a->premier->nombre))
+	t_Element	*tmp;
+	
+	while (pile_a->size > 3)
 	{
-		i = pos_inf(pile_a);
-		if (i < 3)
-			rotate_a(pile_a);
-		else
-			rev_rotate_a(pile_a);
-	}
-	push_b(pile_a, pile_b);
-	while (!elem_inf(pile_a, pile_a->premier->nombre))
-	{
-		i = pos_inf(pile_a);
-		if (i < 3)
-			rotate_a(pile_a);
-		else
-			rev_rotate_a(pile_a);
-	}
-	push_b(pile_a, pile_b);
-	tri_3_elem(pile_a);
-	push_a(pile_a, pile_b);
-	push_a(pile_a, pile_b);
-}
-
-int	pos_inf(t_Pile *pile_a)
-{
-	int			*tab;
-	int			i;
-	int			j;
-	int			x;
-
-	i = 0;
-	x = 0;
-	tab = add_tab(pile_a);
-	while (x != pile_a->size)
-	{
-		j = 0;
-		while (j != pile_a->size)
+		tmp = get_inf(pile_a, &i);
+		while (pile_a->premier != tmp)
 		{
-			if (tab[i] > tab[j])
-				i = j;
-			j++;
+			if (i < 3)
+				rotate_a(pile_a);
+			else
+				rev_rotate_a(pile_a);
 		}
-		x++;
+		push_b(pile_a, pile_b);
 	}
-	free(tab);
-	return (i + 1);
+	tri_3_elem(pile_a);
+	while(pile_b->size)
+		push_a(pile_a, pile_b);
 }
 
-int	elem_inf(t_Pile *pile_a, int first)
-{
-	t_Element	*temp;
-
-	temp = pile_a->premier;
-	while (temp->suivant)
-	{
-		if (temp->nombre < first)
-			return (0);
-		temp = temp->suivant;
-	}
-	return (1);
-}

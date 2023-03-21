@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/20 15:42:10 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 15:11:45 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		*add_tab(t_Pile *pile_a);
 t_Pile	*create_list(t_Pile *pile, int ac, char **av);
 void	verif_str(char *str, t_Pile *pile);
 int		verif_argument(int ac, char **av);
+int		verif_doublons(t_Pile *pile);
 
 //tri
 void	tri(t_Pile *pile_a, t_Pile *pile_b);
@@ -80,9 +81,12 @@ void	index_arg(t_Pile *pile);
 
 //tri_a_3
 void	tri_3_elem(t_Pile *pile_a);
-void	tri_4_elem(t_Pile *pile_a, t_Pile *pile_b);
 void	tri_5_elem(t_Pile *pile_a, t_Pile *pile_b);
-int		elem_inf(t_Pile *pile_a, int first);
-int		pos_inf(t_Pile *pile_a);
+t_Element	*get_inf(t_Pile *a, int *i);
+
+//tri_large
+void	tri_large(t_Pile *pile_a, t_Pile *pile_b);
+void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b);
+t_Element	*get_sup(t_Pile *a, int *i);
 
 #endif
