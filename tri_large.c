@@ -6,18 +6,18 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:04:27 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 20:15:32 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 22:03:56 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tri_large(t_Pile *pile_a, t_Pile *pile_b)
+void	tri_large(t_Pile *pile_a, t_Pile *pile_b, int div)
 {
 	t_Element *tmp;
 	int	i;
 	
-	stacking_pile(pile_a, pile_b);
+	stacking_pile(pile_a, pile_b, div);
 	while (pile_b->size)
 	{
 		tmp = get_sup(pile_b, &i);
@@ -72,7 +72,7 @@ int	from_bot(t_Pile *pile, int min, int max)
 	return (0);
 }
 
-void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b)
+void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b, int div)
 {
 	int i;
 	int	x;
@@ -81,12 +81,12 @@ void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b)
 	int limite[2];
 
 	limite[0] = 0;
-	limite[1] = pile_a->size / 5;
+	limite[1] = pile_a->size / div;
 	max_size = pile_a->size;
 	while (pile_a->size)
 	{
 		i = 0;
-		while (i < max_size / 5)
+		while (i < max_size / div)
 		{
 			x = from_bot(pile_a, limite[0], limite[1]);
 			y = from_top(pile_a, limite[0], limite[1]);
@@ -105,7 +105,7 @@ void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b)
 			i++;	
 		}
 		limite[0] = limite[1];
-		limite[1] += max_size / 5;
+		limite[1] += max_size / div;
 	}
 }
 

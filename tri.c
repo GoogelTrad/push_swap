@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 20:15:22 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/21 23:27:33 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	tri(t_Pile *pile_a, t_Pile *pile_b)
 		tri_3_elem(pile_a);
 	else if (pile_a->size <= 5)
 		tri_5_elem(pile_a, pile_b);
+	else if (pile_a->size <= 499)
+		tri_large(pile_a, pile_b, 5);
 	else
-		tri_large(pile_a, pile_b);
+		tri_large(pile_a, pile_b, 15);
 	//printf("pile a\n");
 	//affiche_pile(&pile_a->premier);
 	//printf("pile b\n");
