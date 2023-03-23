@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:04:27 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 22:03:56 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/22 16:43:37 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	tri_large(t_Pile *pile_a, t_Pile *pile_b, int div)
 {
-	t_Element *tmp;
-	int	i;
-	
+	t_Element	*tmp;
+	int			i;
+
 	stacking_pile(pile_a, pile_b, div);
 	while (pile_b->size)
 	{
@@ -34,9 +34,9 @@ void	tri_large(t_Pile *pile_a, t_Pile *pile_b, int div)
 
 int	from_top(t_Pile *pile, int min, int max)
 {
-	t_Element *tmp;
-	int	i;
-	int j;
+	t_Element	*tmp;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = pile->size / 2;
@@ -44,7 +44,7 @@ int	from_top(t_Pile *pile, int min, int max)
 	while (j < pile->size)
 	{
 		if (tmp->index < max && tmp->index >= min)
-			return (i); 
+			return (i);
 		i++;
 		j++;
 		tmp = tmp->suivant;
@@ -54,9 +54,9 @@ int	from_top(t_Pile *pile, int min, int max)
 
 int	from_bot(t_Pile *pile, int min, int max)
 {
-	t_Element *tmp;
-	int	i;
-	int	j;
+	t_Element	*tmp;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -74,44 +74,33 @@ int	from_bot(t_Pile *pile, int min, int max)
 
 void	stacking_pile(t_Pile *pile_a, t_Pile *pile_b, int div)
 {
-	int i;
+	int	i;
 	int	x;
 	int	y;
-	int max_size;
-	int limite[2];
+	int	limite[3];
 
 	limite[0] = 0;
 	limite[1] = pile_a->size / div;
-	max_size = pile_a->size;
+	limite[2] = pile_a->size;
 	while (pile_a->size)
 	{
 		i = 0;
-		while (i < max_size / div)
+		while (i < limite[2] / div)
 		{
 			x = from_bot(pile_a, limite[0], limite[1]);
 			y = from_top(pile_a, limite[0], limite[1]);
-			if (x <= y)
-			{
-				while (x-- > 0)
-					rotate_a(pile_a);
-				push_b(pile_a, pile_b);
-			}
-			else if (y < x)
-			{
-				while (y++ < max_size)
-					rev_rotate_a(pile_a);
-				push_b(pile_a, pile_b);	
-			}
-			i++;	
+			stacking(pile_a, x, y, limite[2]);
+			push_b(pile_a, pile_b);
+			i++;
 		}
 		limite[0] = limite[1];
-		limite[1] += max_size / div;
+		limite[1] += limite[2] / div;
 	}
 }
 
 t_Element	*get_sup(t_Pile *a, int *i)
 {
-	int 		j;
+	int			j;
 	t_Element	*max;
 	t_Element	*tmp;
 

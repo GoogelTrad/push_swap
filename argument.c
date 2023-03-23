@@ -6,36 +6,37 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:13:33 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/20 16:49:02 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:02:48 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-t_Pile	*create_list(t_Pile *pile, int ac, char **av)
+t_Pile	*create_list(t_Pile *pile_a, t_Pile *pile_b, int ac, char **av)
 {
 	int	i;
 
 	i = 1;
 	if (ac < 2)
-		return (pile);
-	if (!(verif_argument(ac, av)))
+		return (pile_a);
+	if (!(verif_argument(ac, av) && verif_signe(ac, av)))
 	{
-		write(1, "Arguments invalide !\n", 21);
+		write(2, "Error\n", 6);
+		free_pile(pile_a, pile_b);
 		exit(0);
 	}
 	while (i != ac)
 	{
-		verif_str(av[i], pile);
+		verif_str(av[i], pile_a);
 		i++;
 	}
-	if (!verif_doublons(pile))
+	if (!verif_doublons(pile_a))
 	{
-		write(1, "Doublons détectés !\n", 22);
+		write(2, "Error\n", 6);
+		free_pile(pile_a, pile_b);
 		exit(0);
 	}
-	return (pile);
+	return (pile_a);
 }
 
 void	verif_str(char *str, t_Pile *pile)
@@ -56,7 +57,7 @@ void	verif_str(char *str, t_Pile *pile)
 	}
 }
 
-int verif_argument(int ac, char **av)
+int	verif_argument(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -67,7 +68,7 @@ int verif_argument(int ac, char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if ((av[i][j] < '0' || av[i][j] > '9') && av[i][j] != '-' 
+			if ((av[i][j] < '0' || av[i][j] > '9') && av[i][j] != '-'
 				&& av[i][j] != '+' && av[i][j] != ' ')
 				return (0);
 			j++;
@@ -95,6 +96,29 @@ int	verif_doublons(t_Pile *pile)
 			tmp = tmp->suivant;
 		}
 		actu = actu->suivant;
+	}
+	return (1);
+}
+
+int	verif_signe(int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i != ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] == '-' || av[i][j] == '+')
+			{
+				if (av[i][j + 1] < '0' || av[i][j + 1] > '9')
+					return (0);
+			}
+			j++;
+		}
+		i++;
 	}
 	return (1);
 }

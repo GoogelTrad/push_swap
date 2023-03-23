@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:25:46 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 15:12:30 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/22 16:42:19 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	tri_3_elem(t_Pile *pile_a)
 
 t_Element	*get_inf(t_Pile *a, int *i)
 {
-	int 		j;
+	int			j;
 	t_Element	*min;
 	t_Element	*tmp;
 
@@ -57,9 +57,9 @@ t_Element	*get_inf(t_Pile *a, int *i)
 
 void	tri_5_elem(t_Pile *pile_a, t_Pile *pile_b)
 {
-	int	i;
+	int			i;
 	t_Element	*tmp;
-	
+
 	while (pile_a->size > 3)
 	{
 		tmp = get_inf(pile_a, &i);
@@ -73,7 +73,20 @@ void	tri_5_elem(t_Pile *pile_a, t_Pile *pile_b)
 		push_b(pile_a, pile_b);
 	}
 	tri_3_elem(pile_a);
-	while(pile_b->size)
+	while (pile_b->size)
 		push_a(pile_a, pile_b);
 }
 
+void	stacking(t_Pile *pile, int x, int y, int limite)
+{
+	if (x <= y)
+	{
+		while (x-- > 0)
+			rotate_a(pile);
+	}
+	else if (y < x)
+	{
+		while (y++ < limite)
+			rev_rotate_a(pile);
+	}
+}

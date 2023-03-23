@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/21 23:27:33 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:09:51 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,42 +39,27 @@ void	index_arg(t_Pile *pile)
 
 void	tri(t_Pile *pile_a, t_Pile *pile_b)
 {
-	if (pile_a->size == 2)
+	if (!pile_trie(pile_a))
 	{
-		if (pile_a->premier->index > pile_a->premier->suivant->index)
-			swap_a(pile_a);
+		if (pile_a->size == 2)
+		{
+			if (pile_a->premier->index > pile_a->premier->suivant->index)
+				swap_a(pile_a);
+		}
+		else if (pile_a->size == 3)
+			tri_3_elem(pile_a);
+		else if (pile_a->size <= 5)
+			tri_5_elem(pile_a, pile_b);
+		else if (pile_a->size <= 499)
+			tri_large(pile_a, pile_b, 5);
+		else
+			tri_large(pile_a, pile_b, 15);
 	}
-	else if (pile_a->size == 3)
-		tri_3_elem(pile_a);
-	else if (pile_a->size <= 5)
-		tri_5_elem(pile_a, pile_b);
-	else if (pile_a->size <= 499)
-		tri_large(pile_a, pile_b, 5);
-	else
-		tri_large(pile_a, pile_b, 15);
-	//printf("pile a\n");
-	//affiche_pile(&pile_a->premier);
-	//printf("pile b\n");
-	//affiche_pile(&pile_b->premier);
-}
-
-int	rev_pile_trie(t_Pile *pile)
-{
-	t_Element *tmp;
-
-	tmp = pile->premier;
-	while (tmp->suivant)
-	{
-		if (tmp->nombre < tmp->suivant->nombre)
-			return (0);
-		tmp = tmp->suivant;
-	}
-	return (1);
 }
 
 int	pile_trie(t_Pile *pile)
 {
-	t_Element *tmp;
+	t_Element	*tmp;
 
 	tmp = pile->premier;
 	while (tmp->suivant)
@@ -86,10 +71,9 @@ int	pile_trie(t_Pile *pile)
 	return (1);
 }
 
-
 int	elem_sup(t_Element *actuel)
 {
-	while(actuel->index > actuel->suivant->index)
+	while (actuel->index > actuel->suivant->index)
 		actuel = actuel->suivant;
 	if (actuel->suivant)
 		return (1);
