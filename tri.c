@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/30 15:15:17 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/30 18:43:09 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,9 @@ int	elem_sup(t_Element *actuel)
 	return (0);
 }
 
-int	overflow_int(int ac, char **av)
+int	overflow_int(t_Pile *pile_a, t_Pile *pile_b, int nb)
 {
-	int	j;
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		j = 0;
-		if (ft_strlen(av[i]) >= 10)
-		{
-			while (av[i][j])
-			{
-				
-			}
-		}
-	}
+	write(2, "Error\n", 6);
+	free_pile(pile_a, pile_b);
+	exit(0);
 }

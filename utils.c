@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:59:36 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/23 15:15:34 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/30 18:41:25 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *nptr, int *y)
+int	ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b)
 {
 	int	pair;
-	int	i;
 	int	nb;
 
 	pair = 1;
 	nb = 0;
-	i = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	if (!nptr[i])
@@ -34,6 +32,8 @@ int	ft_atoi(char *nptr, int *y)
 		i++;
 	while (nptr[i] && nptr[i] >= 48 && nptr[i] <= 57)
 	{
+		if (nb != ((10 * nb + nptr[i] - 48) / 10))
+			overflow_int(pile_a, pile_b, 1);
 		nb = 10 * nb + nptr[i] - 48;
 		i++;
 	}

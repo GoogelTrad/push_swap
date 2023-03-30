@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:13:33 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/23 16:02:48 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/30 18:43:44 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_Pile	*create_list(t_Pile *pile_a, t_Pile *pile_b, int ac, char **av)
 	return (pile_a);
 }
 
-void	verif_str(char *str, t_Pile *pile)
+void	verif_str(char *str, t_Pile *pile_a, t_Pile *pile_b)
 {
 	int		res;
 	int		i;
@@ -49,7 +49,7 @@ void	verif_str(char *str, t_Pile *pile)
 		return ;
 	while (str[i])
 	{
-		res = ft_atoi(str + i, &i);
+		res = ft_atoi(str + i, &i, 0, pile_a, pile_b);
 		if (i == -1)
 			return ;
 		insertion(pile, res);

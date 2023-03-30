@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/23 15:43:15 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/30 18:44:28 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		rev_rotate_b(t_Pile *pile);
 void		rev_rotate_r(t_Pile *pile_a, t_Pile *pile_b);
 
 //utils
-int			ft_atoi(char *nptr, int *y);
+int			ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b);
 int			ft_strlen(char *str);
 
 //argument
@@ -74,7 +74,7 @@ void		tri(t_Pile *pile_a, t_Pile *pile_b);
 int			pile_trie(t_Pile *pile);
 int			elem_sup(t_Element *actuel);
 void		index_arg(t_Pile *pile);
-
+int			overflow_int(t_Pile *pile_a, t_Pile *pile_b, int nb);
 //tri_a_3
 void		tri_3_elem(t_Pile *pile_a);
 void		tri_5_elem(t_Pile *pile_a, t_Pile *pile_b);
@@ -89,3 +89,6 @@ int			from_top(t_Pile *pile, int min, int max);
 int			from_bot(t_Pile *pile, int min, int max);
 
 #endif
+
+
+//faire les pile a pile b partout sur les fonctions d'arguments
