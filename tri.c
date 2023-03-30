@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tri.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:14:41 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/23 16:09:51 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/30 15:15:17 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,23 @@ int	elem_sup(t_Element *actuel)
 	if (actuel->suivant)
 		return (1);
 	return (0);
+}
+
+int	overflow_int(int ac, char **av)
+{
+	int	j;
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		if (ft_strlen(av[i]) >= 10)
+		{
+			while (av[i][j])
+			{
+				
+			}
+		}
+	}
 }
