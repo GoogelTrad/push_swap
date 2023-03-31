@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:59:36 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/30 18:41:25 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/31 02:52:32 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b)
 	while (nptr[i] && nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		if (nb != ((10 * nb + nptr[i] - 48) / 10))
-			overflow_int(pile_a, pile_b, 1);
+			overflow_int(pile_a, pile_b);
 		nb = 10 * nb + nptr[i] - 48;
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:13:33 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/30 18:43:44 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/03/31 02:52:00 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_Pile	*create_list(t_Pile *pile_a, t_Pile *pile_b, int ac, char **av)
 	}
 	while (i != ac)
 	{
-		verif_str(av[i], pile_a);
+		verif_str(av[i], pile_a, pile_b);
 		i++;
 	}
 	if (!verif_doublons(pile_a))
@@ -52,8 +52,8 @@ void	verif_str(char *str, t_Pile *pile_a, t_Pile *pile_b)
 		res = ft_atoi(str + i, &i, 0, pile_a, pile_b);
 		if (i == -1)
 			return ;
-		insertion(pile, res);
-		pile->size++;
+		insertion(pile_a, res);
+		pile_a->size++;
 	}
 }
 
