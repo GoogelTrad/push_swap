@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:17:43 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/31 02:52:23 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/04/02 15:04:37 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_Pile
 {
 	t_Element	*premier;
 	int			size;
+	int			y;
 }	t_Pile;
 
 //init_list.c
@@ -59,7 +60,7 @@ void		rev_rotate_b(t_Pile *pile);
 void		rev_rotate_r(t_Pile *pile_a, t_Pile *pile_b);
 
 //utils
-int			ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b);
+int			ft_atoi(char *nptr, int i, t_Pile *pile_a, t_Pile *pile_b);
 int			ft_strlen(char *str);
 
 //argument
@@ -89,6 +90,3 @@ int			from_top(t_Pile *pile, int min, int max);
 int			from_bot(t_Pile *pile, int min, int max);
 
 #endif
-
-
-//faire les pile a pile b partout sur les fonctions d'arguments

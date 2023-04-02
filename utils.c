@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: cmichez <cmichez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:59:36 by cmichez           #+#    #+#             */
-/*   Updated: 2023/03/31 02:52:32 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/04/02 15:04:09 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b)
+int	ft_atoi(char *nptr, int i, t_Pile *pile_a, t_Pile *pile_b)
 {
 	int	pair;
 	int	nb;
@@ -22,7 +22,7 @@ int	ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b)
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	if (!nptr[i])
-		return (*y = -1, 0);
+		return (pile_a->y = -1, 0);
 	if (nptr[i] == '-')
 	{
 		pair *= -1;
@@ -37,7 +37,7 @@ int	ft_atoi(char *nptr, int *y, int i, t_Pile *pile_a, t_Pile *pile_b)
 		nb = 10 * nb + nptr[i] - 48;
 		i++;
 	}
-	*y += i;
+	pile_a->y += i;
 	return (nb * pair);
 }
 
